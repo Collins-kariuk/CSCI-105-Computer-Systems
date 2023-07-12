@@ -1,0 +1,7 @@
+1. How long did each of you spend on this assignment?
+
+We both spent a total of 6 hours on this assignment.
+
+2. Any comments on this assignment?
+
+This assignment was less intuitive than we hoped it would be. Some portions of this assignment were rewarding like drawing knowledge from our data structures classes but some parts were also frustrating since some aspects were a little bit more behind the scenes. In the grand scheme of things, it was rewarding building our own little shell.
