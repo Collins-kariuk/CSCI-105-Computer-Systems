@@ -1,0 +1,10 @@
+Collins Kariuki and Joram Amador.
+
+1. How long did each of you spend on this assignment?
+
+We spend a total of 6 hours on this assignment.
+
+
+2. Any comments on this assignment?
+
+We solved coalescing relatively quickly compared to next fit. Next fit gave us a lot of problems because firstly, we didn't implement it right the first time around, and secondly, after several iterations, we failed to raise the accuracy (even after consulting the TA). We plan on meeting you to discuss how best to modify our code.
