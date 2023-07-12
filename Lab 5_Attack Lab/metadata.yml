@@ -1,0 +1,14 @@
+---
+:id: 166103340
+:submitters:
+- :name: Collins Kariuki
+  :email: cmka2020@mymail.pomona.edu
+- :name: Joram Amador
+  :email: jaab2020@mymail.pomona.edu
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2023-03-03 04:28:42.254212000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2023-03-02 20:28:42.254212000 Z
+:status: processed
+:score: 72.0
