@@ -1,0 +1,21 @@
+1. Explain (in detail) why the cache hit rate/cache miss rate you get for length 2 is correct.
+
+Each vector has a length of 4. At first, the first cache line is empty (and the cache at large is empty), and so we'll get at least 1 miss. After the first cache line check, we'll write into the cache and since all cache lines are 256 bytes long, we can fit the four integers in both vectors in the first cache line since the total number of bytes of the 4 integers is 4*4 = 16. As for the cache miss rate, we only get one miss, and we have 4 total accesses so (1/4)*100% = 25% which means the cache hit rate is 100%-25% = 75%.
+
+
+2. Explain why you would expect the cache hit rate to go up as the vectors get longer.
+
+Each cache line in the cache block is 256 bytes long. An integer is 4 bytes long, therefore one cache line can fit 256/4 = 64 integers. Each vector we are dealing with has the same length which means that as long as the total length of both vectors is 64 or less (one vector having a length of 32) then we'll always have one miss. As the length of the vectors increase, the number of accesses increase as the length of one vector multiplied by 2 and so the cache miss rate decreases since the value we get by dividing 1 (miss) by progressively long lengths decreases (till the point where each vector has a length of 32). A progressively decreasing cache length corresponds to a progressively increasing hit rate since there are only 2 states - a cache hit or miss and hence, we would expect the cache hit rate to go up as the vectors get longer.
+
+
+3. Explain why the cache hit rate suddenly drops for large vectors.
+
+From the previous question, we'd expect the cache hit rate to go up to the point where each vector has a length of 32. Above that, the cache hit rate plateaus to 98.4375%. Take the case where the length of a single vector is 64, so the total length is 128. Recall that we can only fit 64 integers in one cache line, therefore the elements of the first vector will fully fit in the first cache line and the elements of the second vector will fully fit in the second cache line. Therefore, the total number of misses is going to be proportional to the number of cache lines that can comfortably fit the elements of the vector (in the case where the length of each vector is greater than or equal to 32). The number of misses grows as the total length of both vectors. Thus the cache hit rate plateaus after length 64. Now, notice that in our cache block we have 256 cache lines so there is a limit as to how much bytes we can store, in particular, the total number of bytes we can store is 256*256 = 65,536 bytes which corresponds to 65,536/4 = 16,384 maximum integers that can be stored in our cache block. Therefore, when the length of one vector is 16,384 we are always going to miss since technically we can only store one vector in our cache block and there's nowhere to store the second vector hence the cache rate is 0 after length 8192.
+
+
+4. What would be a better cache configuration to improve the hit rate for large vectors? Hint: no, you can’t make your cache any bigger.
+
+Notice that after length 8192, the cache hit rate is 0. So to optimize our cache configuration we can divide the length of large vectors into chunks of 8192 (even if the length of the large vector is not divisible by 8192, then we'll get a remainder number of elements/integers that can comfortably in our cache block). For each 8192-chunk we can store it in our cache block and save everything into a variable and (statically) store it then we can optimize our cache configuration to have a cache hit rate of 98.4375% for each 8192-chunk.
+
+
+
